@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
-rm -f /run/apache2/httpd.pid
-exec httpd -DFOREGROUND -f /etc/apache2/httpd.conf "$@"
+rm -f /run/apache2/apache2.pid
+exec apache2ctl -DFOREGROUND
