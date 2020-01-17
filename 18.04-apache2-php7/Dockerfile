@@ -4,7 +4,7 @@ RUN printf "Build of ptipd/uin-devs-ubuntu:18.04-apache2-php7, date: %s\n" `date
     #
     # install web server and php:
     apt-get -y update && \
-    apt-get -y install --no-install-recommends apache2 software-properties-common gpg-agent && \
+    apt-get -y install --no-install-recommends apache2 software-properties-common git curl wput gpg-agent && \
     add-apt-repository ppa:ondrej/php && \
     DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
         apt-get -y install --no-install-recommends libapache2-mod-php7.3 \
