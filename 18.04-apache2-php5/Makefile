@@ -19,8 +19,7 @@ help: ## This help.
 
 .DEFAULT_GOAL := help
 
-NEW_NAME := $(ORG_NAME)/$(APP_NAME)
-IMG_NAME := $(NEW_NAME):$(TAG_NAME)
+IMG_NAME := $(ORG_NAME)/$(APP_NAME):$(TAG_NAME)
 
 # =============================================================================
 # DOCKER TASKS
