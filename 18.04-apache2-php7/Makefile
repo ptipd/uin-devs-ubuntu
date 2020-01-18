@@ -1,5 +1,10 @@
 # import deploy config. (from: https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db)
-# You can change the default deploy config with `make cnf="deploy_special.env" release`
+# You can change the default env config with `make cnf="deploy_special.env" release`
+cnf ?= .config.env
+include $(cnf)
+export $(shell sed 's/=.*//' $(cnf))
+
+# You can change the default deploy config with `make dpl="deploy_special.env" release`
 dpl ?= .deploy.env
 include $(dpl)
 export $(shell sed 's/=.*//' $(dpl))
@@ -27,7 +32,7 @@ build-nc: ## Build the container without caching
 	docker build --no-cache --build-arg $(CFG_ID) --build-arg "APP_BUILD=$(IMG_NAME)" -t $(IMG_NAME) -t $(NEW_NAME) .
 
 run: ## Run container on port configured in `config.env`
-	docker run -d -t --rm --name $(RUN_NAME) $(IMG_NAME)
+	docker run -d --env-file ./.config.env --name $(RUN_NAME) $(IMG_NAME)
 
 up: build run ## Run container on port configured in `.config.env` (Alias to run)
 
