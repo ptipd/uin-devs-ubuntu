@@ -1,4 +1,4 @@
-FROM ptipd/uin-base-ubuntu:1.4_18.04
+FROM ptipd/uin-base-ubuntu:1.5_18.04
 
 ARG CFG_ID
 ARG APP_BUILD
@@ -11,7 +11,9 @@ RUN printf "Build of ${APP_BUILD}, date: %s\n" `date -u +"%Y-%m-%dT%H:%M:%SZ"` >
     add-apt-repository ppa:ondrej/php && \
     DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
         apt-get -y install --no-install-recommends libapache2-mod-php7.3 \
-        php7.3 php7.3-intl php7.3-gd php7.3-curl php7.3-ldap php7.3-mysql php7.3-sqlite3 && \
+        php7.3 php7.3-intl php7.3-gd php7.3-curl php7.3-ldap php7.3-mysql php7.3-sqlite3 \
+        php7.3-xml php7.3-xsl php7.3-soap php7.3-xmlrpc php7.3-pspell php7.3-recode php7.3-readline \
+        php7.3-json php7.3-zip php7.3-bz2 php7.3-mbstring php7.3-imap php7.3-snmp && \
     #
     # prepare custom apache settings:
     groupadd -g ${CFG_ID} cfg && \
