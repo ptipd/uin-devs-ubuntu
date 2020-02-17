@@ -26,10 +26,10 @@ IMG_NAME := $(NEW_NAME):$(TAG_NAME)
 # DOCKER TASKS
 # Build the container
 build: ## Build the container
-	docker build --build-arg $(CFG_ID) --build-arg "APP_BUILD=$(IMG_NAME)" -t $(IMG_NAME) -t $(NEW_NAME) .
+	docker build --build-arg "OWN_BASE=$(OWN_BASE)" --build-arg $(CFG_ID) --build-arg "APP_BUILD=$(IMG_NAME)" -t $(IMG_NAME) -t $(NEW_NAME) .
 
 build-nc: ## Build the container without caching
-	docker build --no-cache --build-arg $(CFG_ID) --build-arg "APP_BUILD=$(IMG_NAME)" -t $(IMG_NAME) -t $(NEW_NAME) .
+	docker build --no-cache --build-arg "OWN_BASE=$(OWN_BASE)" --build-arg $(CFG_ID) --build-arg "APP_BUILD=$(IMG_NAME)" -t $(IMG_NAME) -t $(NEW_NAME) .
 
 run: ## Run container on port configured in `config.env`
 	docker run -d --env-file ./.config.env --name $(RUN_NAME) $(IMG_NAME)
