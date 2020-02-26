@@ -13,8 +13,8 @@ RUN printf "Build of ${APP_BUILD}, date: %s\n" `date -u +"%Y-%m-%dT%H:%M:%SZ"` >
     DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
         apt-get -y install --no-install-recommends libapache2-mod-php7.2 \
         php7.2 php7.2-intl php7.2-gd php7.2-curl php7.2-ldap php7.2-mysql php7.2-sqlite3 \
-        php7.2-xml php7.2-xsl php7.2-soap php7.2-xmlrpc php7.2-pspell php7.2-recode php7.2-readline \
-        php7.2-json php7.2-zip php7.2-bz2 php7.2-mbstring php7.2-imap php7.2-snmp && \
+        php7.2-xml php7.2-xsl php7.2-soap php7.2-xmlrpc php7.2-pspell php7.2-recode \
+        php7.2-readline php7.2-json php7.2-zip php7.2-bz2 php7.2-mbstring php7.2-imap && \
     #
     # prepare custom apache settings:
     groupadd -g ${CFG_ID} cfg && \
